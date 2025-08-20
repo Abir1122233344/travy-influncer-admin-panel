@@ -1,12 +1,13 @@
 import '../styles/globals.css'
 import Head from 'next/head'
 import { useDarkMode } from '../lib/useDarkMode'
+import ErrorBoundary from '../components/ErrorBoundary'
 
 export default function App({ Component, pageProps }) {
   const { isDarkMode } = useDarkMode()
 
   return (
-    <>
+    <ErrorBoundary>
       <Head>
         <title>Travy - Referral & Influencer Platform</title>
         <meta name="description" content="Professional referral and influencer management platform" />
@@ -17,6 +18,6 @@ export default function App({ Component, pageProps }) {
       <div className={isDarkMode ? 'dark' : ''}>
         <Component {...pageProps} />
       </div>
-    </>
+    </ErrorBoundary>
   )
 }
